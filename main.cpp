@@ -32,10 +32,6 @@ int main(){
             values[i] = "00";
         }
     }
-    map<int, string>::iterator it;
-    for(it=values.begin(); it!=values.end(); ++it){
-      cout << it->first << " => " << it->second << '\n';
-    }
 
     //Save file with custom name
     cout << "Da el nombre al archivo sin espacios: ";
@@ -59,7 +55,12 @@ int main(){
     pld << "FIELD entrada = [E0..3] ;"<< endl;
     pld << "FIELD salida = [S0..7] ;"<< endl;
     pld << "TABLE entrada => salida {"<< endl;
+
     //Create table using an array
+    map<int, string>::iterator it;
+    for(it=values.begin(); it!=values.end(); ++it){
+        pld << "'d'" << it->first << "=>    'h'" << it->second << ";" << endl; 
+    }
 
     pld << "}";
     pld.close();
