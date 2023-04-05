@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <cstdio>
+#include <map>
 
 using namespace std;
 
 int main(){
     string typed;
+    map<int,string> values;
     ofstream pld("file.pld");
     cout << "Bienvenido al Editor de CUPL" << endl;
     cout << "de Carlitos jiji" << endl << endl;
@@ -16,16 +18,23 @@ int main(){
     cout << "Introduzca los valores en cada linea usando 00 a FF" << endl;
     cout << "Para salir del llenado oprima S y enter" << endl;
     bool continueWriting = true;
-    for(int i = 0; i < 15; i++){
+    for(int i = 0; i <= 15; i++){
         if(continueWriting){
             cout << "Ingrese el valor de la tabla en hexadecimal " << i << ":"<< endl;
             cin >> typed;
             if(typed[0] == 'S'){
                 continueWriting = false;
+                i--;
+            }else{
+                values[i] = typed;
             }
         }else{
-            //fill with 00
+            values[i] = "00";
         }
+    }
+    map<int, string>::iterator it;
+    for(it=values.begin(); it!=values.end(); ++it){
+      cout << it->first << " => " << it->second << '\n';
     }
 
     //Save file with custom name
