@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(){
-    string typed;
+    string typed,fileName;
     map<int,string> values;
     ofstream pld("file.pld");
     cout << "Bienvenido al Editor de CUPL" << endl;
@@ -35,13 +35,10 @@ int main(){
 
     //Save file with custom name
     cout << "Da el nombre al archivo sin espacios: ";
-    cin >> typed;
-    typed = typed + ".pld";
-    char* fileName = new char[typed.length() + 1];
-    strcpy(fileName, typed.c_str());
+    cin >> fileName;
 
     //Creating file
-    pld << "Name    " << typed << " ;"<< endl;
+    pld << "Name    " << fileName << " ;"<< endl;
     pld << "PartNo  " << "00" << " ;"<< endl;
     pld << "Date  " << "09/03/2022" << " ;"<< endl;
     pld << "Revision  " << "01" << " ;"<< endl;
@@ -56,7 +53,7 @@ int main(){
     pld << "FIELD salida = [S0..7] ;"<< endl;
     pld << "TABLE entrada => salida {"<< endl;
 
-    //Create table using an array
+    //Create table using a map
     map<int, string>::iterator it;
     for(it=values.begin(); it!=values.end(); ++it){
         pld << "'d'" << it->first << "=>    'h'" << it->second << ";" << endl; 
@@ -65,7 +62,11 @@ int main(){
     pld << "}";
     pld.close();
 
-    if (rename("file.pld", fileName) != 0)
+    fileName = fileName + ".pld";
+    char* fileNamePointer = new char[fileName.length() + 1];
+    strcpy(fileNamePointer, fileName.c_str());
+
+    if (rename("file.pld", fileNamePointer) != 0)
 		perror("Error renaming file");
 	else
 		cout << "Creado con exito. Para salir oprima cualquier tecla";
