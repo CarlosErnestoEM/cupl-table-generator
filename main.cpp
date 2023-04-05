@@ -13,6 +13,20 @@ int main(){
     cout << "El programa genera una solucion usando la instruccion TABLE" << endl;
     cout << "Enter para continuar"; cin.ignore();
 
+    cout << "Introduzca los valores en cada linea usando 00 a FF" << endl;
+    cout << "Para salir del llenado oprima S y enter" << endl;
+    bool continueWriting = true;
+    for(int i = 0; i < 15; i++){
+        if(continueWriting){
+            cout << "Ingrese el valor de la tabla en hexadecimal " << i << ":"<< endl;
+            cin >> typed;
+            if(typed[0] == 'S'){
+                continueWriting = false;
+            }
+        }else{
+            //fill with 00
+        }
+    }
 
     //Save file with custom name
     cout << "Da el nombre al archivo sin espacios: ";
