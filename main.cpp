@@ -9,14 +9,14 @@ int main(){
     string typed,fileName;
     map<int,string> values;
     ofstream pld("file.pld");
-    cout << "Bienvenido al Editor de CUPL" << endl;
-    cout << "de Carlitos jiji" << endl << endl;
+    cout << "Estrada Mendoza Carlos Ernesto" << endl;
+    cout << "Bienvenido al Editor de CUPL" << endl << endl;
 
     cout << "El programa genera una solucion usando la instruccion TABLE" << endl;
     cout << "Enter para continuar"; cin.ignore();
 
     cout << "Introduzca los valores en cada linea usando 00 a FF" << endl;
-    cout << "Para salir del llenado oprima S y enter" << endl;
+    cout << "Para salir del llenado oprima 'S' y ENTER / Continuar Cualquier Tecla o ENTER" << endl;
     bool continueWriting = true;
     for(int i = 0; i <= 15; i++){
         if(continueWriting){
